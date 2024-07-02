@@ -9,8 +9,11 @@ This is a prototype of a bookstore website developed using Python and Django.
 
 ## Screenshots
 
-![Screenshot 1](https://github.com/Ryota77777/BookStoreWebSite/blob/main/photo_2024-06-12_10-42-32.jpg?raw=true))
+![Screenshot 1](https://github.com/Ryota77777/BookStoreWebSite/blob/main/photo_2024-06-12_10-42-32.jpg?raw=true)
 
+![Screenshot 1](https://github.com/Ryota77777/BookStoreWebSite/blob/main/photo_2024-06-12_10-42-32.jpg?raw=true)
+
+![Screenshot 1](https://github.com/Ryota77777/BookStoreWebSite/blob/main/photo_2024-06-12_10-42-32.jpg?raw=true)
 
 ## How to Use
 
