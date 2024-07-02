@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать модель авто</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .form-container button[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff7e5f;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-container button[type="submit"]:hover {
+            background-color: #feb47b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Редактировать модель авто</h1>
+        <div class="form-container">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_model">Модель:</label>
+                <input type="text" id="id_model" name="model" value="{{ form.instance.model }}" required>
+                <label for="id_logo">Марка:</label>
+                <input type="text" id="id_logo" name="logo" value="{{ form.instance.logo }}" required>
+                <label for="id_description">Описание:</label>
+                <textarea id="id_description" name="description" rows="4" required>{{ form.instance.description }}</textarea>
+                <label for="id_price">Цена:</label>
+                <input type="text" id="id_price" name="price" value="{{ form.instance.price }}" required>
+                <label for="id_purchase_date">Дата покупки:</label>
+                <input type="text" id="id_purchase_date" name="purchase_date" value="{{ form.instance.purchase_date|date:"Y-m-d" }}" required>
+                <label for="id_cover_image">Фото:</label>
+                <input type="file" id="id_cover_image" name="cover_image" accept="image/*">
+                <button type="submit">Сохранить изменения</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

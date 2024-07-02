@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог авто</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff7e5f;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-bar button:hover {
+            background-color: #feb47b;
+        }
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .catalog-item {
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            width: calc(41% - 20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .catalog-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .catalog-item h2 {
+            color: #333;
+        }
+        .catalog-item p {
+            color: #666;
+        }
+        .catalog-item .edit-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ff7e5f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .catalog-item .edit-button:hover {
+            background-color: #feb47b;
+        }
+        .add-new {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #ff7e5f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .add-new:hover {
+            background-color: #feb47b;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="back-button">Главная</a>
+    <div class="container">
+        <h1>Каталог авто</h1>
+        <div class="search-bar">
+            <form method="get" action="{% url 'catalog' %}">
+                <input type="text" name="q" placeholder="Поиск по моделям..." value="{{ request.GET.q }}">
+                <button type="submit">Поиск</button>
+            </form>
+        </div>
+        <div class="catalog">
+            {% for book in books %}
+            <div class="catalog-item">
+                <img src="{{ book.cover_image.url }}" alt="{{ book.model }}">
+                <h2>Модель: {{ book.model }}</h2>
+                <p>Марка: {{ book.logo }}</p>
+                <p>Описание: {{ book.description }}</p>
+                <p>Цена: {{ book.price }}</p>
+                <p>Дата покупки: {{ book.purchase_date }}</p>
+                <a href="{% url 'edit_book' book.id %}" class="edit-button">Редактировать</a>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'add_book' %}" class="add-new">Добавить новую модель</a>
+    </div>
+</body>
+</html>
+

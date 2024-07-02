@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать в личный кабинет</h1>
+        <p>Здесь вы можете получить доступ к дополнительным возможностям нашего сервиса:</p>
+        <p>Получите доступ к эксклюзивным предложениям и акциям, следите за состоянием вашего аккаунта и многое другое.</p>
+        <div class="button-container">
+            <a href="{% url 'login' %}"><button>Войти</button></a>
+            <a href="{% url 'register' %}"><button>Зарегистрироваться</button></a>
+        </div>
+    </div>
+</body>
+</html>
+

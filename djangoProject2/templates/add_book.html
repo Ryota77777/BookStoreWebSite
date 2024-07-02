@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Интернет-магазин книг</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Цвет заднего фона */
+            font-family: Arial, sans-serif; /* Шрифт */
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333; /* Цвет заголовка */
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #4CAF50; /* Цвет кнопок */
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049; /* Цвет кнопок при наведении */
+        }
+        form {
+            margin-top: 20px;
+        }
+        form button[type="submit"] {
+            background-color: #008CBA; /* Цвет кнопки "Добавить книгу" */
+        }
+        form button[type="submit"]:hover {
+            background-color: #005f7f; /* Цвет кнопки "Добавить книгу" при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Интернет-магазин книг</h1>
+        <button type="button">Главная</button>
+        <button type="button"><a href="{% url 'catalog' %}">Каталог</a></button>
+        <button type="button">Корзина</button>
+        <button type="button">Мои заказы</button>
+        <button type="button"><a href="{% url 'personal_cabinet' %}">Личный кабинет</a></button>
+        <button type="button"><a href="{% url 'login' %}">Войти</a></button>
+        <button type="button"><a href="{% url 'register' %}">Регистрация</a></button>
+        <br><br>
+        <h2>Добавить новую книгу</h2>
+        <a href="{% url 'catalog' %}">Открыть каталог книг</a>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Добавить книгу</button>
+        </form>
+        <hr> <!-- Горизонтальная линия для отделения формы добавления книги от каталога -->
+        <h2>Каталог книг</h2>
+        <ul>
+            {% for book in books %}
+            <li>{{ book.title }} - {{ book.author }} - {{ book.price }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
+
