@@ -18,7 +18,23 @@ This is a prototype of a bookstore website developed using Python and Django.
 ## How to Use
 
 1. Clone the repository:
-
    ```bash
    git clone https://github.com/Ryota77777/BookStoreWebSite.git
-
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd BookStoreWebSite
+   ```
+3. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Apply the database migrations:
+   ```bash
+   python manage.py migrate
+   ```
+5. Run the development server:
+   ```bash
+   python manage.py runserver
+   ```
+Open your browser and visit http://127.0.0.1:8000/ to view the website.
